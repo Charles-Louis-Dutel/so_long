@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/08 18:27:07 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/10 11:01:10 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*check_line_and_characters(t_data var, char *map)
 		if (map[var.i] == '\n' || map[var.i + 1] == '\0')
 		{
 			if (var.j != var.len)
-				return (map_not_valid(map));
+				return (map_not_valid(map, "Map is not rectangular"));
 			var.line++;
 			var.j = -1;
 		}
@@ -35,7 +35,8 @@ static char	*check_line_and_characters(t_data var, char *map)
 		var.i++;
 	}
 	if (var.start != 1 || var.exit != 1 || var.collectible < 1)
-		return (map_not_valid(map));
+		return (map_not_valid(map,
+				"Wrong number of collectibles, player or exit"));
 	return (map);
 }
 
@@ -43,6 +44,7 @@ static char	*is_map_closed(t_data var, char *map)
 {
 	while (map[var.len] && map[var.len] != '\n')
 		var.len++;
+	var.i = 0;
 	while (map[var.i])
 	{
 		if (map[var.i] == '\n')
@@ -56,12 +58,12 @@ static char	*is_map_closed(t_data var, char *map)
 		if (map[var.i] == '\n')
 			var.j++;
 		else if (var.j == 1 && map[var.i] != '1')
-			return (map_not_valid(map));
+			return (map_not_valid(map, "Map is not closed"));
 		else if (var.j > 1 && var.j < var.line && (map[var.i - 1] == '\n'
 				|| map[var.i + 1] == '\n') && map[var.i] != '1')
-			return (map_not_valid(map));
+			return (map_not_valid(map, "Map is not closed"));
 		else if (var.j == var.line && map[var.i] != '1')
-			return (map_not_valid(map));
+			return (map_not_valid(map, "Map is not closed"));
 		var.i++;
 	}
 	return (map);
@@ -75,7 +77,17 @@ static char	*check_map_validity(char *map)
 	map = check_line_and_characters(var, map);
 	if (!map)
 		return (NULL);
+	while (map[var.i])
+	{
+		if (!ft_strchr("01PCE\n", map[var.i]))
+			return (map_not_valid(map, "Wrong character"));
+		var.i++;
+	}
 	map = is_map_closed(var, map);
+	if (!map)
+		return (NULL);
+	var = init_var();
+	map = check_path_validity(var, map);
 	if (!map)
 		return (NULL);
 	return (map);
@@ -106,7 +118,6 @@ char	*parse_map(int fd, t_data data)
 			return (NULL);
 		}
 	}
-	//ft_printf("%s", data.map_temp);
 	data.map = check_map_validity(data.map_temp);
 	return (data.map);
 }

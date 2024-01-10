@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:26 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/08 14:00:55 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/09 15:06:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	main(int argc, char **argv)
 		if (fd == -1)
 		{
 			perror(argv[1]);
+			return (1);
+		}
+		if (!(ft_strnstr(argv[1], ".ber", ft_strlen(argv[1]))))
+		{
+			write(2, "Error\nFile is not a '.ber'", 27);
 			return (1);
 		}
 		data.map = parse_map(fd, data);

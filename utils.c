@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/08 18:06:11 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/09 17:00:11 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,23 @@ t_data	init_var(void)
 	return (var);
 }
 
-char	*map_not_valid(char *map)
+t_game	init_game(void)
 {
-	ft_printf("Error\nMap is not valid");
+	t_game	game;
+
+	game.i = 0;
+	game.j = 0;
+	game.x = 0;
+	game.y = 0;
+	game.collectible = 0;
+	game.exit = 0;
+	game.start = 0;
+	return (game);
+}
+
+char	*map_not_valid(char *map, char *to_print)
+{
+	ft_printf("Error\n%s", to_print);
 	free(map);
 	return (NULL);
 }

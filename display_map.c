@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/11 01:20:08 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/11 03:55:51 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_images(t_game *game)
 	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
 					"sprites/sortie.xpm", &pixels, &pixels);
 	game->img.player = mlx_xpm_file_to_image(game->mlx_ptr,
-					"sprites/smogo.xpm", &pixels, &pixels);
+					"sprites/sacha_right.xpm", &pixels, &pixels);
 }
 
 static void	put_sprite(t_game *game, int x, int y)

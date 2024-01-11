@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/10 11:14:05 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/10 11:29:19 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	find_start(t_game *game, t_data var, char **map)
 	return ;
 }
 
-void	find_path(t_game *game, int x, int y)
+static void	find_path(t_game *game, int x, int y)
 {
 	char	c;
 

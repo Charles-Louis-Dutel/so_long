@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 ###########################Sources#############################
 SRCS = \
 	so_long.c parse_map.c utils.c check_path.c \
+	game.c display_map.c\
 
 #SRCS_BONUS =
 

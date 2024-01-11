@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:26 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/09 15:06:53 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/10 12:00:05 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 		data.map = parse_map(fd, data);
-		//ft_printf("%s", data.map);
-		//if (data.map)
+		if (data.map)
+			game(data.map);
 		free(data.map);
 	}
 	return (0);

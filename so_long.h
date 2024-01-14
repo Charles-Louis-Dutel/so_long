@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 18:42:50 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 18:59:43 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ typedef struct s_img
 	void	*path;
 	void	*exit;
 	void	*pokeball;
-	void	*player;
+	void	*player_right;
+	void	*player_left;
+	void	*player_top;
+	void	*player_bot;
 }	t_img;
 
 typedef struct s_game

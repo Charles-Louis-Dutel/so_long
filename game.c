@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 18:50:53 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:42:16 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	end_game(t_game *game)
 	ft_le_xav(game->map);
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.path);
-	mlx_destroy_image(game->mlx_ptr, game->img.player);
+	mlx_destroy_image(game->mlx_ptr, game->img.player_right);
+	mlx_destroy_image(game->mlx_ptr, game->img.player_left);
+	mlx_destroy_image(game->mlx_ptr, game->img.player_top);
+	mlx_destroy_image(game->mlx_ptr, game->img.player_bot);
 	mlx_destroy_image(game->mlx_ptr, game->img.pokeball);
 	mlx_destroy_image(game->mlx_ptr, game->img.tree);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
@@ -87,7 +90,7 @@ void	game(char *map)
 	}
 	set_game(&game, map);
 	mlx_hook(game.win_ptr, 2, 1L<<0, &handle_input, &game);
-	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
+	//mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
 	mlx_loop(game.mlx_ptr);
 	//free(map);
 }

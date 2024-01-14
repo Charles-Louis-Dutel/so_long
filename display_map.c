@@ -6,11 +6,26 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/11 03:55:51 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:03:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void set_img_player(t_game *game)
+{
+	int	pixels;
+
+	pixels = 64;
+	game->img.player_right = mlx_xpm_file_to_image(game->mlx_ptr,
+					"sprites/sacha_right.xpm", &pixels, &pixels);
+	game->img.player_left = mlx_xpm_file_to_image(game->mlx_ptr,
+					"sprites/sacha_left.xpm", &pixels, &pixels);
+	game->img.player_top = mlx_xpm_file_to_image(game->mlx_ptr,
+					"sprites/sacha_top.xpm", &pixels, &pixels);
+	game->img.player_bot = mlx_xpm_file_to_image(game->mlx_ptr,
+					"sprites/sacha_bot.xpm", &pixels, &pixels);
+}
 
 void	set_images(t_game *game)
 {
@@ -25,8 +40,7 @@ void	set_images(t_game *game)
 					"sprites/pokeball.xpm", &pixels, &pixels);
 	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
 					"sprites/sortie.xpm", &pixels, &pixels);
-	game->img.player = mlx_xpm_file_to_image(game->mlx_ptr,
-					"sprites/sacha_right.xpm", &pixels, &pixels);
+	set_img_player(game);
 }
 
 static void	put_sprite(t_game *game, int x, int y)
@@ -42,7 +56,7 @@ static void	put_sprite(t_game *game, int x, int y)
 				game->img.path, x, y);
 	else if (c == 'P')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-				game->img.player, x, y);
+				game->img.player_right, x, y);
 	else if (c == 'C')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 				game->img.pokeball, x, y);

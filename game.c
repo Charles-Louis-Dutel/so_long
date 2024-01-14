@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 19:42:16 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 20:59:12 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int	end_game(t_game *game)
 
 int	handle_input(int keysym, t_game *game)
 {
-
 	if (keysym == XK_Escape)
-		return(end_game(game));
+		return (end_game(game));
 	if (keysym == XK_w)
 		move_top(game);
 	if (keysym == XK_s)
@@ -47,9 +46,8 @@ int	handle_input(int keysym, t_game *game)
 
 void	set_game(t_game *game, char *map_temp)
 {
-	int	(i) = 0;
-	int	(j) = 0;
-
+	int (i) = 0;
+	int (j) = 0;
 	game->map = ft_split(map_temp, '\n');
 	free(map_temp);
 	set_images(game);
@@ -89,8 +87,7 @@ void	game(char *map)
 		return ;
 	}
 	set_game(&game, map);
-	mlx_hook(game.win_ptr, 2, 1L<<0, &handle_input, &game);
-	//mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
+	mlx_hook(game.win_ptr, 2, 1L << 0, &handle_input, &game);
+	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
 	mlx_loop(game.mlx_ptr);
-	//free(map);
 }

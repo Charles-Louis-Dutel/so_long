@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 18:59:43 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 20:59:28 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_game
 	t_img	img;
 }	t_game;
 
-
 /*Parse map*/
 char	*parse_map(int fd, t_data data);
 
@@ -84,7 +83,7 @@ char	*map_not_valid(char *map, char *to_print);
 
 /*Game*/
 void	game(char *map);
-int	end_game(t_game *game);
+int		end_game(t_game *game);
 
 /*Display map*/
 void	set_images(t_game *game);

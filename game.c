@@ -6,32 +6,67 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/11 01:19:55 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 18:50:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	handle_input(int keysym, t_game *data)
+int	end_game(t_game *game)
+{
+	ft_le_xav(game->map);
+	mlx_destroy_image(game->mlx_ptr, game->img.exit);
+	mlx_destroy_image(game->mlx_ptr, game->img.path);
+	mlx_destroy_image(game->mlx_ptr, game->img.player);
+	mlx_destroy_image(game->mlx_ptr, game->img.pokeball);
+	mlx_destroy_image(game->mlx_ptr, game->img.tree);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	exit(0);
+}
+
+int	handle_input(int keysym, t_game *game)
 {
 
-    if (keysym == XK_Escape)
-    {
-        printf("The %d key (ESC) has been pressed\n\n", keysym);
-        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-        mlx_destroy_display(data->mlx_ptr);
-        free(data->mlx_ptr);
-        exit(1);
-    }
-    printf("The %d key has been pressed\n\n", keysym);
-    return (0);
+	if (keysym == XK_Escape)
+		return(end_game(game));
+	if (keysym == XK_w)
+		move_top(game);
+	if (keysym == XK_s)
+		move_bottom(game);
+	if (keysym == XK_a)
+		move_left(game);
+	if (keysym == XK_d)
+		move_right(game);
+	return (0);
 }
 
 void	set_game(t_game *game, char *map_temp)
 {
+	int	(i) = 0;
+	int	(j) = 0;
+
 	game->map = ft_split(map_temp, '\n');
+	free(map_temp);
 	set_images(game);
 	print_map(game);
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'P')
+			{
+				game->x = j;
+				game->y = i;
+			}
+			if (game->map[i][j] == 'C')
+				game->collectible++;
+			j++;
+		}
+		i++;
+	}
 	return ;
 }
 
@@ -50,10 +85,9 @@ void	game(char *map)
 		free(game.mlx_ptr);
 		return ;
 	}
-	mlx_key_hook(game.win_ptr,
-				handle_input,
-				&game);
 	set_game(&game, map);
+	mlx_hook(game.win_ptr, 2, 1L<<0, &handle_input, &game);
+	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
 	mlx_loop(game.mlx_ptr);
-	free(map);
+	//free(map);
 }

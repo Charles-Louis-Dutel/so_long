@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/09 17:00:11 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 17:21:35 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_game	init_game(void)
 	game.collectible = 0;
 	game.exit = 0;
 	game.start = 0;
+	game.move = 0;
 	return (game);
 }
 

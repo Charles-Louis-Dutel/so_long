@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/10 23:23:01 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/14 18:42:50 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_game
 	int		collectible;
 	int		start;
 	int		exit;
+	int		move;
 	char	**map_test;
 	char	**map;
 	void	*mlx_ptr;
@@ -80,9 +81,16 @@ char	*map_not_valid(char *map, char *to_print);
 
 /*Game*/
 void	game(char *map);
+int	end_game(t_game *game);
 
 /*Display map*/
 void	set_images(t_game *game);
 void	print_map(t_game *game);
+
+/*Moves*/
+void	move_right(t_game *game);
+void	move_left(t_game *game);
+void	move_top(t_game *game);
+void	move_bottom(t_game *game);
 
 #endif

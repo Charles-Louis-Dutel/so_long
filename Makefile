@@ -4,13 +4,17 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 ###########################Sources#############################
-SRCS = \
+SRCS_DIR = sources/
+FILES = \
 	so_long.c parse_map.c utils.c check_path.c \
 	game.c display_map.c moves.c\
 
+SRCS = $(addprefix $(SRCS_DIR), $(FILES))
 #SRCS_BONUS =
 
 ###########################Objects#############################
+#OBJ_DIR = obj/
+#OBJS = $(addprefix $(OBJ_DIR), ${SRCS:.c=.o})
 OBJS = ${SRCS:.c=.o}
 #OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 #OBJS_ALL = ${OBJS} ${OBJS_BONUS}
@@ -23,15 +27,18 @@ LIBX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 ALL_LIB = ${LIBFT} ${FT_PRINTF} ${GNL}
 
 ###########################Rules#############################
+
 all: ${NAME}
 
 ${NAME}: ${OBJS}
+	@make -C ./minilibx-linux
 	${CC} ${CFLAGS} ${OBJS} ${ALL_LIB} ${LIBX} -o ${NAME}
 
 #bonus: ${OBJS_BONUS}
 #	${CC} ${CFLAGS} ${OBJS_BONUS} ${ALL_LIB} -o ${NAME_BONUS}
 
 clean:
+	@make clean -C ./minilibx-linux
 	rm -f ${OBJS}
 
 fclean: clean

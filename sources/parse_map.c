@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/10 11:01:10 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 14:22:18 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,32 @@ static char	*is_map_closed(t_data var, char *map)
 	return (map);
 }
 
+static char	*is_map_too_big(char *map)
+{
+	char	**test;
+	int		i;
+	int		j;
+
+	test = ft_split(map, '\n');
+	i = 0;
+	while (test[i])
+	{
+		j = 0;
+		while (test[i][j])
+		{
+			j++;
+		}
+		i++;
+		if (j > 30 || i > 16)
+		{
+			ft_le_xav(test);
+			return (map_not_valid(map, "Map is too big"));
+		}
+	}
+	ft_le_xav(test);
+	return (map);
+}
+
 static char	*check_map_validity(char *map)
 {
 	t_data	var;
@@ -84,6 +110,9 @@ static char	*check_map_validity(char *map)
 		var.i++;
 	}
 	map = is_map_closed(var, map);
+	if (!map)
+		return (NULL);
+	map = is_map_too_big(map);
 	if (!map)
 		return (NULL);
 	var = init_var();

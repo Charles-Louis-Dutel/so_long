@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 20:59:28 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 15:16:02 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
-# include "includes/libft.h"
-# include "includes/ft_printf.h"
-# include "includes/get_next_line.h"
+# include "../includes/libft.h"
+# include "../includes/ft_printf.h"
+# include "../includes/get_next_line.h"
 # include <X11/keysym.h>
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 # define TREE_PATH "sprites/arbre.xpm"
 

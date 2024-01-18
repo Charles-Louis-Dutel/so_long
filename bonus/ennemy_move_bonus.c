@@ -6,13 +6,31 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:24:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 19:15:12 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 23:12:46 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	print_move(t_game *game, t_enemy *e)
+static void	print_enemy_move_2(t_game *game, t_enemy *e)
+{
+	if (game->map[e->y][e->x + 1] == '0' || game->map[e->y][e->x + 1] == 'P')
+	{
+		if (game->map[e->y][e->x + 1] == 'P')
+			end_game(game);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.path, (e->x * 64), (e->y * 64 + 128));
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.smogo_left, ((e->x + 1) * 64), (e->y * 64 + 128));
+		game->map[e->y][e->x] = '0';
+		game->map[e->y][e->x + 1] = 'S';
+		e->x++;
+	}
+	else
+		e->direction = 0;
+}
+
+static void	print_enemy_move(t_game *game, t_enemy *e)
 {
 	if (e->timer > 100000)
 	{
@@ -21,10 +39,12 @@ static void	print_move(t_game *game, t_enemy *e)
 		{
 			if (game->map[e->y][e->x - 1] == '0' || game->map[e->y][e->x - 1] == 'P')
 			{
+				if (game->map[e->y][e->x - 1] == 'P')
+					end_game(game);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->img.path, (e->x * 64), (e->y * 64));
+					game->img.path, (e->x * 64), (e->y * 64 + 128));
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->img.smogo_left, ((e->x - 1) * 64), (e->y * 64));
+					game->img.smogo_left, ((e->x - 1) * 64), (e->y * 64 + 128));
 				game->map[e->y][e->x] = '0';
 				game->map[e->y][e->x - 1] = 'S';
 				e->x--;
@@ -33,20 +53,7 @@ static void	print_move(t_game *game, t_enemy *e)
 				e->direction = 1;
 		}
 		else
-		{
-			if (game->map[e->y][e->x + 1] == '0' || game->map[e->y][e->x + 1] == 'P')
-			{
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->img.path, (e->x * 64), (e->y * 64));
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->img.smogo_left, ((e->x + 1) * 64), (e->y * 64));
-				game->map[e->y][e->x] = '0';
-				game->map[e->y][e->x + 1] = 'S';
-				e->x++;
-			}
-			else
-				e->direction = 0;
-		}
+			print_enemy_move_2(game, e);
 	}
 	e->timer++;
 }
@@ -60,7 +67,7 @@ int		ennemy_move(t_game *game)
 	while (lst)
 	{
 		e = (t_enemy *)lst->content;
-		print_move(game, e);
+		print_enemy_move(game, e);
 		lst = lst->next;
 	}
 	return (0);

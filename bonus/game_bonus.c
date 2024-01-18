@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 19:41:57 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/18 10:30:51 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	set_game(t_game *game, char *map_temp)
 		}
 		i++;
 	}
-	return ;
 }
 
 void	game(char *map)
@@ -92,12 +91,12 @@ void	game(char *map)
 		return ;
 	}
 	set_game(&game, map);
-	mlx_hook(game.win_ptr, 2, 1L << 0, &handle_input, &game);
 	if (game.n_enemy > 0)
 	{
 		init_enemy(&game);
 		mlx_loop_hook(game.mlx_ptr, &ennemy_move, &game);
 	}
+	mlx_hook(game.win_ptr, 2, 1L << 0, &handle_input, &game);
 	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
 	mlx_loop(game.mlx_ptr);
 }

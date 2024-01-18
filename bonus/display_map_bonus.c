@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 16:01:20 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 23:10:35 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,29 @@ void	set_images(t_game *game)
 	set_img_player(game);
 }
 
-static void	put_sprite(t_game *game, int x, int y)
+void	put_sprite(t_game *game, int x, int y)
 {
 	char	c;
 
 	c = game->map[y / 64][x / 64];
 	if (c == '1')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.tree, x, y);
+			game->img.tree, x, y + 128);
 	else if (c == '0')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.path, x, y);
+			game->img.path, x, y + 128);
 	else if (c == 'P')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_right, x, y);
+			game->img.player_right, x, y + 128);
 	else if (c == 'C')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.pokeball, x, y);
+			game->img.pokeball, x, y + 128);
 	else if (c == 'E')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.exit, x, y);
+			game->img.exit, x, y + 128);
 	else if (c == 'S')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.smogo_left, x, y);
+			game->img.smogo_left, x, y + 128);
 }
 
 void	print_map(t_game *game)

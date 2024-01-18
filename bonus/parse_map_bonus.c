@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 16:03:39 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 23:05:01 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static char	*is_map_too_big(char *map)
 			j++;
 		}
 		i++;
-		if (j > 30 || i > 16)
+		if (j > 30 || i > 14)
 		{
 			ft_le_xav(test);
 			return (map_not_valid(map, "Map is too big"));

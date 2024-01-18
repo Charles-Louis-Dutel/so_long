@@ -35,11 +35,11 @@ ALL_LIB = ${LIBFT} ${FT_PRINTF} ${GNL}
 
 ###########################Rules#############################
 
-all: ${NAME} bonus
-
 ${NAME}: ${OBJS}
 	@make -C ./minilibx-linux
 	${CC} ${CFLAGS} ${OBJS} ${ALL_LIB} ${LIBX} -o ${NAME}
+
+all: ${NAME} bonus
 
 bonus: ${OBJS_BONUS}
 	@make -C ./minilibx-linux

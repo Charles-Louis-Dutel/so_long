@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 19:41:48 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/17 21:11:06 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		end_game(t_game *game);
 /*Display map*/
 void	set_images(t_game *game);
 void	print_map(t_game *game);
+void	put_sprite(t_game *game, int x, int y);
 
 /*Moves*/
 void	move_right(t_game *game);

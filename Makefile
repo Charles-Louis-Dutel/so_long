@@ -15,7 +15,7 @@ BONUS_DIR = bonus/
 FILES_BONUS = \
 	so_long_bonus.c parse_map_bonus.c utils_bonus.c \
 	check_path_bonus.c game_bonus.c display_map_bonus.c \
-	moves_bonus.c ennemy_move_bonus.c \
+	moves_bonus.c ennemy_move_bonus.c print_new_map.c \
 	
 SRCS_BONUS = $(addprefix $(BONUS_DIR), $(FILES_BONUS))
 

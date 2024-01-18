@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 21:11:06 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:08:12 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct s_game
 	int		exit;
 	int		move;
 	int		n_enemy;
+	int		to_print;
+	int		update;
+	int		len;
+	int		height;
 	char	**map_test;
 	char	**map;
 	void	*mlx_ptr;
@@ -110,5 +114,7 @@ void	move_bottom(t_game *game);
 /*Ennemy move*/
 void	init_enemy(t_game *game);
 int		ennemy_move(t_game *game);
+
+int		print_map_move(t_game *game);
 
 #endif

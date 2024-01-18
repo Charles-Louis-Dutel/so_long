@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/18 10:30:51 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:12:36 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,27 @@ int	handle_input(int keysym, t_game *game)
 
 void	set_game(t_game *game, char *map_temp)
 {
-	int (i) = 0;
-	int (j) = 0;
 	game->map = ft_split(map_temp, '\n');
 	free(map_temp);
 	set_images(game);
 	print_map(game);
-	while (game->map[i])
+	while (game->map[game->height])
 	{
-		j = 0;
-		while (game->map[i][j])
+		game->len = 0;
+		while (game->map[game->height][game->len])
 		{
-			if (game->map[i][j] == 'P')
+			if (game->map[game->height][game->len] == 'P')
 			{
-				game->x = j;
-				game->y = i;
+				game->x = game->len;
+				game->y = game->height;
 			}
-			if (game->map[i][j] == 'C')
+			if (game->map[game->height][game->len] == 'C')
 				game->collectible++;
-			if (game->map[i][j] == 'S')
+			if (game->map[game->height][game->len] == 'S')
 				game->n_enemy++;
-			j++;
+			game->len++;
 		}
-		i++;
+		game->height++;
 	}
 }
 
@@ -92,10 +90,8 @@ void	game(char *map)
 	}
 	set_game(&game, map);
 	if (game.n_enemy > 0)
-	{
 		init_enemy(&game);
-		mlx_loop_hook(game.mlx_ptr, &ennemy_move, &game);
-	}
+	mlx_loop_hook(game.mlx_ptr, &print_map_move, &game);
 	mlx_hook(game.win_ptr, 2, 1L << 0, &handle_input, &game);
 	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);
 	mlx_loop(game.mlx_ptr);

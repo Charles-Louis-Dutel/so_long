@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/18 13:12:36 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/19 00:48:18 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int	end_game(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.player_top);
 	mlx_destroy_image(game->mlx_ptr, game->img.player_bot);
 	mlx_destroy_image(game->mlx_ptr, game->img.pokeball);
+	mlx_destroy_image(game->mlx_ptr, game->img.pokeball_up);
 	mlx_destroy_image(game->mlx_ptr, game->img.tree);
 	mlx_destroy_image(game->mlx_ptr, game->img.smogo_left);
 	mlx_destroy_image(game->mlx_ptr, game->img.smogo_right);
+	mlx_destroy_image(game->mlx_ptr, game->img.full_heart);
+	mlx_destroy_image(game->mlx_ptr, game->img.empty_heart);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);

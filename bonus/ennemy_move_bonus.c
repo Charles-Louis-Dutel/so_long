@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:24:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/18 12:51:50 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/19 00:52:22 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	print_enemy_move_2(t_game *game, t_enemy *e)
 	if (game->map[e->y][e->x + 1] == '0' || game->map[e->y][e->x + 1] == 'P')
 	{
 		if (game->map[e->y][e->x + 1] == 'P')
-			end_game(game);
-		// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		// 	game->img.path, (e->x * 64), (e->y * 64 + 128));
-		// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		// 	game->img.smogo_left, ((e->x + 1) * 64), (e->y * 64 + 128));
+		{
+			game->life--;
+			e->timer = -10000;
+			return ;
+		}
 		game->map[e->y][e->x] = '0';
 		game->map[e->y][e->x + 1] = 'S';
 		e->x++;
@@ -41,11 +41,11 @@ static void	print_enemy_move(t_game *game, t_enemy *e)
 			if (game->map[e->y][e->x - 1] == '0' || game->map[e->y][e->x - 1] == 'P')
 			{
 				if (game->map[e->y][e->x - 1] == 'P')
-					end_game(game);
-				// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-				// 	game->img.path, (e->x * 64), (e->y * 64 + 128));
-				// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-				// 	game->img.smogo_left, ((e->x - 1) * 64), (e->y * 64 + 128));
+				{
+					game->life--;
+					e->timer = -10000;
+					return ;
+				}
 				game->map[e->y][e->x] = '0';
 				game->map[e->y][e->x - 1] = 'S';
 				e->x--;
@@ -71,6 +71,7 @@ int		ennemy_move(t_game *game)
 		print_enemy_move(game, e);
 		lst = lst->next;
 	}
+	game->timer_poke++;
 	return (0);
 }
 
@@ -94,7 +95,7 @@ void	init_enemy(t_game *game)
 				if (game->enemy == NULL)
 					game->enemy = ft_lstnew(e);
 				else
-					ft_lstadd_front(&game->enemy, ft_lstnew(e));
+					ft_lstadd_back(&game->enemy, ft_lstnew(e));
 			}
 			j++;
 		}

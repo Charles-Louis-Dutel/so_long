@@ -6,12 +6,15 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/18 13:08:12 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/19 00:16:41 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
+
+# define PXL 64
+# define HUD 128
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -43,12 +46,15 @@ typedef struct s_img
 	void	*path;
 	void	*exit;
 	void	*pokeball;
+	void	*pokeball_up;
 	void	*player_right;
 	void	*player_left;
 	void	*player_top;
 	void	*player_bot;
 	void	*smogo_left;
 	void	*smogo_right;
+	void	*empty_heart;
+	void	*full_heart;
 }	t_img;
 
 typedef struct s_enemy
@@ -65,10 +71,13 @@ typedef struct s_game
 	int		j;
 	int		x;
 	int		y;
+	int		n;
+	int		life;
 	int		collectible;
 	int		start;
 	int		exit;
 	int		move;
+	int		timer_poke;
 	int		n_enemy;
 	int		to_print;
 	int		update;

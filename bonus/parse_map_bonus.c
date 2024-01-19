@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/18 14:44:38 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/18 20:00:00 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static char	*check_line_and_characters(t_data var, char *map)
 			var.line++;
 			var.j = -1;
 		}
-		if (map[var.i] == 'C')
+		else if (map[var.i] == 'C')
 			var.collectible++;
-		if (map[var.i] == 'P')
+		else if (map[var.i] == 'P')
 			var.start++;
-		if (map[var.i] == 'E')
+		else if (map[var.i] == 'E')
 			var.exit++;
 		var.j++;
 		var.i++;

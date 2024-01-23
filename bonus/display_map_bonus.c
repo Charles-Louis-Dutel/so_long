@@ -3,57 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 00:18:22 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/22 22:10:39 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-static void	set_img_player(t_game *game)
-{
-	int	pixels;
-
-	pixels = PXL;
-	game->img.player_right = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_right.xpm", &pixels, &pixels);
-	game->img.player_left = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_left.xpm", &pixels, &pixels);
-	game->img.player_top = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_top.xpm", &pixels, &pixels);
-	game->img.player_bot = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_bot.xpm", &pixels, &pixels);
-}
-
-void	set_images(t_game *game)
-{
-	int	pixels;
-	int	pixels2;
-
-	pixels = PXL;
-	pixels2 = HUD;
-	game->img.tree = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/arbre.xpm", &pixels, &pixels);
-	game->img.path = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/chemin.xpm", &pixels, &pixels);
-	game->img.pokeball = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/pokeball.xpm", &pixels, &pixels);
-	game->img.pokeball_up = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/pokeball_up.xpm", &pixels, &pixels);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sortie.xpm", &pixels, &pixels);
-	game->img.smogo_left = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/smogo.xpm", &pixels, &pixels);
-	game->img.smogo_right = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/smogo_right.xpm", &pixels, &pixels);
-	game->img.full_heart = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/coeur_plein.xpm", &pixels2, &pixels2);
-	game->img.empty_heart = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/coeur_vide.xpm", &pixels2, &pixels2);
-	set_img_player(game);
-}
 
 void	put_sprite(t_game *game, int x, int y)
 {
@@ -91,6 +48,13 @@ static void	print_hud(t_game *game)
 			game->img.full_heart, i * HUD, 0);
 		i++;
 	}
+	i = 11;
+	while (i < 15)
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.zero, i * HUD, 0);
+		i++;
+	}
 }
 
 void	print_map(t_game *game)
@@ -110,4 +74,58 @@ void	print_map(t_game *game)
 		}
 		y++;
 	}
+}
+
+static void	print_move_2(t_game *game, char *count, int len, int i)
+{
+	if (count[len] == '3')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.trois, i * HUD, 0);
+	else if (count[len] == '4')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.quatre, i * HUD, 0);
+	else if (count[len] == '5')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.cinq, i * HUD, 0);
+	else if (count[len] == '6')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.six, i * HUD, 0);
+	else if (count[len] == '7')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.sept, i * HUD, 0);
+	else if (count[len] == '8')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.huit, i * HUD, 0);
+	else if (count[len] == '9')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.neuf, i * HUD, 0);
+}
+
+void	print_move_count(t_game *game)
+{
+	char	*count;
+	int		len;
+
+	int (i) = 14;
+	count = ft_itoa(game->move);
+	len = (int)ft_strlen(count) - 1;
+	if (len > 3)
+		return (free(count));
+	while (len >= 0)
+	{
+		if (count[len] == '0')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.zero, i * HUD, 0);
+		else if (count[len] == '1')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.un, i * HUD, 0);
+		else if (count[len] == '2')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.deux, i * HUD, 0);
+		else if (count[len] >= '3' && count[len] <= '9')
+			print_move_2(game, count, len, i);
+		i--;
+		len--;
+	}
+	free(count);
 }

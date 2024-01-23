@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 00:16:41 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/22 21:40:23 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ typedef struct s_img
 	void	*smogo_right;
 	void	*empty_heart;
 	void	*full_heart;
+	void	*zero;
+	void	*un;
+	void	*deux;
+	void	*trois;
+	void	*quatre;
+	void	*cinq;
+	void	*six;
+	void	*sept;
+	void	*huit;
+	void	*neuf;
 }	t_img;
 
 typedef struct s_enemy
@@ -113,6 +123,7 @@ int		end_game(t_game *game);
 void	set_images(t_game *game);
 void	print_map(t_game *game);
 void	put_sprite(t_game *game, int x, int y);
+void	print_move_count(t_game *game);
 
 /*Moves*/
 void	move_right(t_game *game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:04:38 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 01:03:50 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/22 21:54:04 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_right(t_game *game)
 	if (game->map[y][x + 1] != '1')
 	{
 		game->move++;
-		ft_printf("Total moves : %d\n", game->move);
+		print_move_count(game);
 		if (game->map[y][x + 1] == 'E' && game->collectible == 0)
 			end_game(game);
 		else if (game->map[y][x + 1] == 'S')
@@ -46,7 +46,7 @@ void	move_left(t_game *game)
 	if (game->map[y][x - 1] != '1')
 	{
 		game->move++;
-		ft_printf("Total moves : %d\n", game->move);
+		print_move_count(game);
 		if (game->map[y][x - 1] == 'E' && game->collectible == 0)
 			end_game(game);
 		else if (game->map[y][x - 1] == 'S')
@@ -73,7 +73,7 @@ void	move_top(t_game *game)
 	if (game->map[y - 1][x] != '1')
 	{
 		game->move++;
-		ft_printf("Total moves : %d\n", game->move);
+		print_move_count(game);
 		if (game->map[y - 1][x] == 'E' && game->collectible == 0)
 			end_game(game);
 		else if (game->map[y - 1][x] == 'S')
@@ -100,7 +100,7 @@ void	move_bottom(t_game *game)
 	if (game->map[y + 1][x] != '1')
 	{
 		game->move++;
-		ft_printf("Total moves : %d\n", game->move);
+		print_move_count(game);
 		if (game->map[y + 1][x] == 'E' && game->collectible == 0)
 			end_game(game);
 		else if (game->map[y + 1][x] == 'S')

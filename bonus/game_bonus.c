@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 00:48:18 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/22 21:53:32 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+static void	destroy_img(t_game *game)
+{
+	mlx_destroy_image(game->mlx_ptr, game->img.zero);
+	mlx_destroy_image(game->mlx_ptr, game->img.un);
+	mlx_destroy_image(game->mlx_ptr, game->img.deux);
+	mlx_destroy_image(game->mlx_ptr, game->img.trois);
+	mlx_destroy_image(game->mlx_ptr, game->img.quatre);
+	mlx_destroy_image(game->mlx_ptr, game->img.cinq);
+	mlx_destroy_image(game->mlx_ptr, game->img.six);
+	mlx_destroy_image(game->mlx_ptr, game->img.sept);
+	mlx_destroy_image(game->mlx_ptr, game->img.huit);
+	mlx_destroy_image(game->mlx_ptr, game->img.neuf);
+}
 
 int	end_game(t_game *game)
 {
@@ -29,6 +43,7 @@ int	end_game(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.smogo_right);
 	mlx_destroy_image(game->mlx_ptr, game->img.full_heart);
 	mlx_destroy_image(game->mlx_ptr, game->img.empty_heart);
+	destroy_img(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
@@ -39,14 +54,15 @@ int	handle_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 		return (end_game(game));
-	if (keysym == XK_w)
+	else if (keysym == XK_w)
 		move_top(game);
-	if (keysym == XK_s)
+	else if (keysym == XK_s)
 		move_bottom(game);
-	if (keysym == XK_a)
+	else if (keysym == XK_a)
 		move_left(game);
-	if (keysym == XK_d)
+	else if (keysym == XK_d)
 		move_right(game);
+	//print_move_count(game);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:04:38 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 10:54:35 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 22:42:00 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	move_right(t_game *game)
 	{
 		if (game->map[y][x + 1] == 'E' && game->collectible == 0)
 			end_game(game);
-		else if (game->map[y][x + 1] == 'S')
+		else if (game->map[y][x + 1] == 'S' || game->map[y][x + 1] == 's')
 			game->life--;
-		else if (game->map[y][x + 1] != 'E' && game->map[y][x + 1] != 'S')
+		else if (game->map[y][x + 1] != 'E' && game->map[y][x + 1] != 'S' && game->map[y][x + 1] != 's')
 		{
 			game->move++;
 			print_move_count(game);
@@ -47,9 +47,9 @@ void	move_left(t_game *game)
 	{
 		if (game->map[y][x - 1] == 'E' && game->collectible == 0)
 			end_game(game);
-		else if (game->map[y][x - 1] == 'S')
+		else if (game->map[y][x - 1] == 'S' || game->map[y][x - 1] == 's')
 			game->life--;
-		else if (game->map[y][x - 1] != 'E' && game->map[y][x - 1] != 'S')
+		else if (game->map[y][x - 1] != 'E' && game->map[y][x - 1] != 'S' && game->map[y][x - 1] != 's')
 		{
 			game->move++;
 			print_move_count(game);
@@ -74,9 +74,9 @@ void	move_top(t_game *game)
 	{
 		if (game->map[y - 1][x] == 'E' && game->collectible == 0)
 			end_game(game);
-		else if (game->map[y - 1][x] == 'S')
+		else if (game->map[y - 1][x] == 'S' || game->map[y - 1][x] == 's')
 			game->life--;
-		else if (game->map[y - 1][x] != 'E' && game->map[y - 1][x] != 'S')
+		else if (game->map[y - 1][x] != 'E' && game->map[y - 1][x] != 'S' && game->map[y - 1][x] != 's')
 		{
 			game->move++;
 			print_move_count(game);
@@ -101,9 +101,9 @@ void	move_bottom(t_game *game)
 	{
 		if (game->map[y + 1][x] == 'E' && game->collectible == 0)
 			end_game(game);
-		else if (game->map[y + 1][x] == 'S')
+		else if (game->map[y + 1][x] == 'S' || game->map[y + 1][x] == 's')
 				game->life--;
-		else if (game->map[y + 1][x] != 'E' && game->map[y + 1][x] != 'S')
+		else if (game->map[y + 1][x] != 'E' && game->map[y + 1][x] != 'S' && game->map[y + 1][x] != 's')
 		{
 			game->move++;
 			print_move_count(game);

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 14:22:22 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 23:08:16 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	destroy_img(t_game *game)
 int	end_game(t_game *game)
 {
 	ft_le_xav(game->map);
-	free_list(&game->enemy);
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.path);
 	mlx_destroy_image(game->mlx_ptr, game->img.player_right);
@@ -107,8 +106,6 @@ void	game(char *map)
 		return ;
 	}
 	set_game(&game, map);
-	if (game.n_enemy > 0)
-		init_enemy(&game);
 	mlx_loop_hook(game.mlx_ptr, &print_map_move, &game);
 	mlx_hook(game.win_ptr, 2, 1L << 0, &handle_input, &game);
 	mlx_hook(game.win_ptr, 17, 0L, &end_game, &game);

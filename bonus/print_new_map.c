@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:46:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 11:53:03 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 23:02:14 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static void	put_sprite_2(t_game *game, char c, int xx, int yy)
 	else if (c == 'S')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->img.smogo_left, xx, yy);
+	else if (c == 's')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.smogo_right, xx, yy);
 }
 
 void	update_hud(t_game *game)

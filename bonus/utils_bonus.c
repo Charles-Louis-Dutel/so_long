@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 11:52:08 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 23:19:26 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ t_game	init_game(void)
 	game.life = 3;
 	game.old_life = 3;
 	game.n_enemy = 0;
-	game.enemy = NULL;
 	game.to_print = 0;
 	game.update = 0;
 	game.height = 0;
 	game.len = 0;
 	game.timer_poke = 0;
+	game.timer_enemy = 0;
 	return (game);
 }
 

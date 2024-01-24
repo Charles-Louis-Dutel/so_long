@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 11:51:40 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 23:08:00 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,6 @@ typedef struct s_img
 	void	*neuf;
 }	t_img;
 
-typedef struct s_enemy
-{
-	int		direction;
-	int		timer;
-	int		x;
-	int		y;
-}	t_enemy;
-
 typedef struct s_game
 {
 	int		i;
@@ -88,6 +80,7 @@ typedef struct s_game
 	int		start;
 	int		exit;
 	int		move;
+	int		timer_enemy;
 	int		timer_poke;
 	int		n_enemy;
 	int		to_print;
@@ -99,7 +92,6 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
-	t_list	*enemy;
 }	t_game;
 
 /*Parse map*/
@@ -133,9 +125,9 @@ void	move_top(t_game *game);
 void	move_bottom(t_game *game);
 
 /*Ennemy move*/
-void	init_enemy(t_game *game);
 void	ennemy_move(t_game *game);
 
+/*Print new map*/
 int		print_map_move(t_game *game);
 
 #endif

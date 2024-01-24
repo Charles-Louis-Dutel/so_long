@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/22 21:40:23 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 11:51:40 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_game
 	int		y;
 	int		n;
 	int		life;
+	int		old_life;
 	int		collectible;
 	int		start;
 	int		exit;
@@ -133,7 +134,7 @@ void	move_bottom(t_game *game);
 
 /*Ennemy move*/
 void	init_enemy(t_game *game);
-int		ennemy_move(t_game *game);
+void	ennemy_move(t_game *game);
 
 int		print_map_move(t_game *game);
 

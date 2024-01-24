@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 00:16:59 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 11:52:08 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_game	init_game(void)
 	game.start = 0;
 	game.move = 0;
 	game.life = 3;
+	game.old_life = 3;
 	game.n_enemy = 0;
 	game.enemy = NULL;
 	game.to_print = 0;

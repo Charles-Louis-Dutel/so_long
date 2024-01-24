@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/22 21:53:32 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 14:22:22 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	handle_input(int keysym, t_game *game)
 		move_left(game);
 	else if (keysym == XK_d)
 		move_right(game);
-	//print_move_count(game);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:24:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/19 00:52:22 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/24 13:16:07 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	print_enemy_move_2(t_game *game, t_enemy *e)
 		if (game->map[e->y][e->x + 1] == 'P')
 		{
 			game->life--;
-			e->timer = -10000;
+			e->timer = -500000;
 			return ;
 		}
 		game->map[e->y][e->x] = '0';
@@ -38,12 +38,12 @@ static void	print_enemy_move(t_game *game, t_enemy *e)
 		game->update = 1;
 		if (e->direction == 0)
 		{
-			if (game->map[e->y][e->x - 1] == '0' || game->map[e->y][e->x - 1] == 'P')
+			if (ft_strchr("0P", game->map[e->y][e->x - 1]))
 			{
 				if (game->map[e->y][e->x - 1] == 'P')
 				{
 					game->life--;
-					e->timer = -10000;
+					e->timer = -500000;
 					return ;
 				}
 				game->map[e->y][e->x] = '0';
@@ -59,7 +59,7 @@ static void	print_enemy_move(t_game *game, t_enemy *e)
 	e->timer++;
 }
 
-int		ennemy_move(t_game *game)
+void	ennemy_move(t_game *game)
 {
 	t_list	*lst;
 	t_enemy	*e;
@@ -71,19 +71,18 @@ int		ennemy_move(t_game *game)
 		print_enemy_move(game, e);
 		lst = lst->next;
 	}
-	game->timer_poke++;
-	return (0);
 }
 
 void	init_enemy(t_game *game)
 {
 	t_enemy	*e;
-	int	j;
+
+	int (j) = 0;
 	int (i) = 0;
 	while (game->map[i])
 	{
 		j = 0;
-		while(game->map[i][j])
+		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'S')
 			{

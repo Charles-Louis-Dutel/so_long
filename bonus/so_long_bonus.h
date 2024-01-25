@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 23:08:00 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 07:48:05 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define PXL 64
 # define HUD 128
+# define LEN 1024
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -65,6 +66,7 @@ typedef struct s_img
 	void	*sept;
 	void	*huit;
 	void	*neuf;
+	void	*banniere;
 }	t_img;
 
 typedef struct s_game

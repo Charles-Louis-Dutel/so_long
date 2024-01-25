@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:24:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 23:23:00 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 08:02:48 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	ennemy_move(t_game *game)
 			while (game->map[y][x])
 			{
 				if (game->map[y][x] == 'S')
-						enemy_move_left(game, x, y);
+					enemy_move_left(game, x, y);
 				else if (game->map[y][x] == 's')
 				{
-						enemy_move_right(game, x, y);
-						x++;
+					enemy_move_right(game, x, y);
+					x++;
 				}
 				x++;
 			}

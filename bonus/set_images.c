@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:23:00 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/22 21:30:16 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 07:49:32 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,33 @@ static void	set_img_player(t_game *game)
 			"sprites/sacha_bot.xpm", &pixels, &pixels);
 }
 
-static void	set_img_hud(t_game *game)
+static void	set_img_hud(t_game *game, int pixels2)
 {
 	int	pixels;
 
-	pixels = HUD;
+	pixels = LEN;
 	game->img.zero = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/zero.xpm", &pixels, &pixels);
+			"sprites/zero.xpm", &pixels2, &pixels2);
 	game->img.un = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/un.xpm", &pixels, &pixels);
+			"sprites/un.xpm", &pixels2, &pixels2);
 	game->img.deux = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/deux.xpm", &pixels, &pixels);
+			"sprites/deux.xpm", &pixels2, &pixels2);
 	game->img.trois = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/trois.xpm", &pixels, &pixels);
+			"sprites/trois.xpm", &pixels2, &pixels2);
 	game->img.quatre = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/quatre.xpm", &pixels, &pixels);
+			"sprites/quatre.xpm", &pixels2, &pixels2);
 	game->img.cinq = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/cinq.xpm", &pixels, &pixels);
+			"sprites/cinq.xpm", &pixels2, &pixels2);
 	game->img.six = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/six.xpm", &pixels, &pixels);
+			"sprites/six.xpm", &pixels2, &pixels2);
 	game->img.sept = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sept.xpm", &pixels, &pixels);
+			"sprites/sept.xpm", &pixels2, &pixels2);
 	game->img.huit = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/huit.xpm", &pixels, &pixels);
+			"sprites/huit.xpm", &pixels2, &pixels2);
 	game->img.neuf = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/neuf.xpm", &pixels, &pixels);
+			"sprites/neuf.xpm", &pixels2, &pixels2);
+	game->img.banniere = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/banniere.xpm", &pixels, &pixels2);
 }
 
 void	set_images(t_game *game)
@@ -80,5 +82,5 @@ void	set_images(t_game *game)
 	game->img.empty_heart = mlx_xpm_file_to_image(game->mlx_ptr,
 			"sprites/coeur_vide.xpm", &pixels2, &pixels2);
 	set_img_player(game);
-	set_img_hud(game);
+	set_img_hud(game, pixels2);
 }

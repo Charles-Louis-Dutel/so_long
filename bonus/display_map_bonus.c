@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/22 22:10:39 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 07:50:57 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void	print_hud(t_game *game)
 			game->img.full_heart, i * HUD, 0);
 		i++;
 	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->img.banniere, i * HUD, 0);
 	i = 11;
 	while (i < 15)
 	{

@@ -6,26 +6,32 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:46:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 23:02:14 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 08:09:09 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	put_player(t_game *game, int xx, int yy)
+static void	put_player(t_game *game, int xx, int yy, char c)
 {
-	if (game->to_print == 'W')
+	if (c == '0')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_top, xx, yy);
-	else if (game->to_print == 'S')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_bot, xx, yy);
-	else if (game->to_print == 'A')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_left, xx, yy);
-	else if (game->to_print == 'D')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_right, xx, yy);
+			game->img.path, xx, yy);
+	else
+	{
+		if (game->to_print == 'W')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.player_top, xx, yy);
+		else if (game->to_print == 'S')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.player_bot, xx, yy);
+		else if (game->to_print == 'A')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.player_left, xx, yy);
+		else if (game->to_print == 'D')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.player_right, xx, yy);
+	}
 }
 
 static void	put_sprite_2(t_game *game, char c, int xx, int yy)
@@ -34,10 +40,9 @@ static void	put_sprite_2(t_game *game, char c, int xx, int yy)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->img.tree, xx, yy);
 	else if (c == '0')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.path, xx, yy);
+		put_player(game, xx, yy, c);
 	else if (c == 'P')
-		put_player(game, xx, yy);
+		put_player(game, xx, yy, c);
 	else if (c == 'C')
 	{
 		if (game->timer_poke <= 500000)

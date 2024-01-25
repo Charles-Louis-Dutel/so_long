@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 23:08:16 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/01/25 07:46:01 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	destroy_img(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.sept);
 	mlx_destroy_image(game->mlx_ptr, game->img.huit);
 	mlx_destroy_image(game->mlx_ptr, game->img.neuf);
+	mlx_destroy_image(game->mlx_ptr, game->img.banniere);
 }
 
 int	end_game(t_game *game)

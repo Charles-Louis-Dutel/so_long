@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/24 23:19:26 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:27:58 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_data	init_var(void)
 	return (var);
 }
 
-t_game	init_game(void)
+t_game	init_game(char *map)
 {
 	t_game	game;
 
@@ -61,7 +61,11 @@ t_game	init_game(void)
 	game.len = 0;
 	game.timer_poke = 0;
 	game.timer_enemy = 0;
-	return (game);
+	game.map = NULL;
+	game.map = ft_split(map, '\n');
+	free(map);
+	game.mlx_ptr = NULL;
+	return (game.error = 0, game.win_ptr = NULL, game);
 }
 
 char	*map_not_valid(char *map, char *to_print)
@@ -69,23 +73,4 @@ char	*map_not_valid(char *map, char *to_print)
 	ft_printf("Error\n%s", to_print);
 	free(map);
 	return (NULL);
-}
-
-void	free_list(t_list **lst)
-{
-	t_list	*temp;
-
-	if (!lst || !*lst)
-		return ;
-	if (lst && *lst)
-	{
-		while (*lst)
-		{
-			temp = (*lst)->next;
-			free((*lst)->content);
-			free(*lst);
-			*lst = temp;
-		}
-		*lst = NULL;
-	}
 }

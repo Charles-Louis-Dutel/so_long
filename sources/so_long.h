@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/14 13:33:42 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:32:56 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,16 @@
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 
-# define TREE_PATH "sprites/arbre.xpm"
+# define PXL 64
+
+# define TREE "sprites/arbre.xpm"
+# define PATH "sprites/chemin.xpm"
+# define POKEBALL "sprites/pokeball.xpm"
+# define EXIT "sprites/sortie.xpm"
+# define P_RIGHT "sprites/sacha_right.xpm"
+# define P_LEFT "sprites/sacha_left.xpm"
+# define P_TOP "sprites/sacha_top.xpm"
+# define P_BOT "sprites/sacha_bot.xpm"
 
 typedef struct s_data
 {
@@ -61,6 +70,7 @@ typedef struct s_game
 	int		start;
 	int		exit;
 	int		move;
+	int		error;
 	char	**map_test;
 	char	**map;
 	void	*mlx_ptr;
@@ -78,15 +88,18 @@ void	find_start(t_game *game, t_data var, char **map);
 /*Utils*/
 void	ft_le_xav(char **dest);
 t_data	init_var(void);
-t_game	init_game(void);
+t_game	init_game(char *map);
 char	*map_not_valid(char *map, char *to_print);
 
 /*Game*/
 void	game(char *map);
+
+/*Manage error*/
+void	destroy_images(t_game *game);
 int		end_game(t_game *game);
 
 /*Display map*/
-void	set_images(t_game *game);
+int		set_images(t_game *game);
 void	print_map(t_game *game);
 
 /*Moves*/

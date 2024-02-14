@@ -7,7 +7,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS_DIR = sources/
 FILES = \
 	so_long.c parse_map.c utils.c check_path.c \
-	game.c display_map.c moves.c\
+	game.c display_map.c moves.c endgame.c \
+	set_images.c \
 
 SRCS = $(addprefix $(SRCS_DIR), $(FILES))
 
@@ -16,7 +17,7 @@ FILES_BONUS = \
 	so_long_bonus.c parse_map_bonus.c utils_bonus.c \
 	check_path_bonus.c game_bonus.c display_map_bonus.c \
 	moves_bonus.c ennemy_move_bonus.c print_new_map.c \
-	set_images.c \
+	set_images_bonus.c endgame_bonus.c\
 
 SRCS_BONUS = $(addprefix $(BONUS_DIR), $(FILES_BONUS))
 

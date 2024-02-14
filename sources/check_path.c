@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 19:16:02 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:17:18 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,30 @@ static void	find_path(t_game *game, int x, int y)
 	find_path(game, x, y - 1);
 }
 
+t_game	init(void)
+{
+	t_game	game;
+
+	game.i = 0;
+	game.j = 0;
+	game.x = 0;
+	game.y = 0;
+	game.collectible = 0;
+	game.exit = 0;
+	game.start = 0;
+	game.move = 0;
+	game.error = 0;
+	game.map = NULL;
+	game.mlx_ptr = NULL;
+	game.win_ptr = NULL;
+	return (game);
+}
+
 char	*check_path_validity(t_data var, char *map)
 {
 	t_game	game;
 
-	game = init_game();
+	game = init();
 	game.map_test = ft_split(map, '\n');
 	find_start(&game, var, game.map_test);
 	find_path(&game, game.x, game.y);

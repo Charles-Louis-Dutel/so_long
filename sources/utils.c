@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/14 17:21:35 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:07:29 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_data	init_var(void)
 	return (var);
 }
 
-t_game	init_game(void)
+t_game	init_game(char *map)
 {
 	t_game	game;
 
@@ -51,6 +51,12 @@ t_game	init_game(void)
 	game.exit = 0;
 	game.start = 0;
 	game.move = 0;
+	game.error = 0;
+	game.map = NULL;
+	game.map = ft_split(map, '\n');
+	free(map);
+	game.mlx_ptr = NULL;
+	game.win_ptr = NULL;
 	return (game);
 }
 

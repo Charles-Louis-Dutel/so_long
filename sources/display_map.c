@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 15:37:55 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:38:15 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	set_img_player(t_game *game)
-{
-	int	pixels;
-
-	pixels = 64;
-	game->img.player_right = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_right.xpm", &pixels, &pixels);
-	game->img.player_left = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_left.xpm", &pixels, &pixels);
-	game->img.player_top = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_top.xpm", &pixels, &pixels);
-	game->img.player_bot = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sacha_bot.xpm", &pixels, &pixels);
-}
-
-void	set_images(t_game *game)
-{
-	int	pixels;
-
-	pixels = 64;
-	game->img.tree = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/arbre.xpm", &pixels, &pixels);
-	game->img.path = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/chemin.xpm", &pixels, &pixels);
-	game->img.pokeball = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/pokeball.xpm", &pixels, &pixels);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/sortie.xpm", &pixels, &pixels);
-	set_img_player(game);
-}
 
 static void	put_sprite(t_game *game, int x, int y)
 {

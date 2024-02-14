@@ -21,16 +21,14 @@ FILES_BONUS = \
 SRCS_BONUS = $(addprefix $(BONUS_DIR), $(FILES_BONUS))
 
 ###########################Objects#############################
-#OBJ_DIR = obj/
-#OBJS = $(addprefix $(OBJ_DIR), ${SRCS:.c=.o})
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 OBJS_ALL = ${OBJS} ${OBJS_BONUS}
 
 ###########################Libs#############################
-LIBFT = includes/libft.a
-FT_PRINTF = includes/libftprintf.a
-GNL = includes/libgnl.a
+LIBFT = libft/libft.a
+FT_PRINTF = libft/ft_printf/libftprintf.a
+GNL = libft/get_next_line/libgnl.a
 LIBX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 ALL_LIB = ${LIBFT} ${FT_PRINTF} ${GNL}
 
@@ -38,16 +36,19 @@ ALL_LIB = ${LIBFT} ${FT_PRINTF} ${GNL}
 
 ${NAME}: ${OBJS}
 	@make -C ./minilibx-linux
+	@${MAKE} -C ./libft
 	${CC} ${CFLAGS} ${OBJS} ${ALL_LIB} ${LIBX} -o ${NAME}
 
 all: ${NAME} bonus
 
 bonus: ${OBJS_BONUS}
 	@make -C ./minilibx-linux
+	@${MAKE} -C ./libft
 	${CC} ${CFLAGS} ${OBJS_BONUS} ${ALL_LIB} ${LIBX} -o ${NAME_BONUS}
 
 clean:
 	@make clean -C ./minilibx-linux
+	@${MAKE} -C ./libft fclean
 	rm -f ${OBJS_ALL}
 
 fclean: clean

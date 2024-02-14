@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/25 07:48:05 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 13:33:40 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
-# include "../includes/libft.h"
-# include "../includes/ft_printf.h"
-# include "../includes/get_next_line.h"
+# include "../libft/libft.h"
+# include "../libft/ft_printf/ft_printf.h"
+# include "../libft/get_next_line/get_next_line.h"
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
 

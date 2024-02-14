@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:04:38 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/25 08:06:23 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/14 13:42:20 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	move_bottom(t_game *game)
 		if (game->map[y + 1][x] == 'E' && game->collectible == 0)
 			end_game(game);
 		else if (game->map[y + 1][x] == 'S' || game->map[y + 1][x] == 's')
-				game->life--;
+			game->life--;
 		else if (game->map[y + 1][x] != 'E' && game->map[y + 1][x] != 'S'
 			&& game->map[y + 1][x] != 's')
 		{

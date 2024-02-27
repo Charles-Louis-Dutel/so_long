@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/14 16:34:28 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/27 09:35:02 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct s_game
 }	t_game;
 
 /*Parse map*/
-char	*parse_map(int fd, t_data data);
+char	*parse_map(int fd);
 
 /*Check path*/
 char	*check_path_validity(t_data var, char *map);

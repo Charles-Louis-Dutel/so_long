@@ -1,7 +1,7 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3
 
 ###########################Sources#############################
 SRCS_DIR = sources/

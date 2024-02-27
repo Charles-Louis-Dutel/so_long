@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/17 14:22:18 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/02/27 09:34:20 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,10 @@ static char	*check_map_validity(char *map)
 	return (map);
 }
 
-char	*parse_map(int fd, t_data data)
+char	*parse_map(int fd)
 {
+	t_data	data;
+
 	data.map_temp = (char *)malloc(1 * sizeof(char));
 	if (!data.map_temp)
 		return (NULL);
@@ -142,10 +144,7 @@ char	*parse_map(int fd, t_data data)
 			data.map_temp = ft_strjoin(data.map_temp, data.map_line);
 		free(data.map_line);
 		if (!data.map_temp)
-		{
-			free(data.map_temp);
-			return (NULL);
-		}
+			return (free(data.map_temp), NULL);
 	}
 	data.map = check_map_validity(data.map_temp);
 	return (data.map);

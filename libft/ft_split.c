@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:20:52 by cdutel            #+#    #+#             */
-/*   Updated: 2023/12/19 13:02:05 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:36:19 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	*ft_error(char **dest)
 	size_t	i;
 
 	i = 0;
+	if (!dest || !*dest)
+		return (NULL);
 	while (dest[i])
 	{
 		free(dest[i]);
@@ -44,14 +46,14 @@ static int	ft_n_mot(char const *s, char c)
 	return (nb_mot);
 }
 
-static char	*remplir_dest(char const *s, int start, int end, char **dest)
+static char	*remplir_dest(char const *s, int start, int end)
 {
 	char	*tab;
 	int		i;
 
 	tab = malloc(sizeof(char) * (end - start +1));
 	if (!tab)
-		return (ft_error(dest));
+		return (NULL);
 	i = 0;
 	while (start < end)
 	{
@@ -67,16 +69,14 @@ char	**ft_split(char const *s, char c)
 {
 	char		**dest;
 	int			start;
-	size_t		i;
-	int			j;
 
+	size_t (i) = 0;
+	int (j) = 0;
 	if (!s)
 		return (NULL);
 	dest = malloc(sizeof(char *) * (ft_n_mot(s, c) + 1));
 	if (!dest)
 		return (NULL);
-	i = 0;
-	j = 0;
 	while (i < ft_strlen(s))
 	{
 		if (s[i] != c && s[i])
@@ -84,7 +84,9 @@ char	**ft_split(char const *s, char c)
 			start = i;
 			while (s[i] != c && s[i])
 				i++;
-			dest[j++] = remplir_dest(s, start, i, dest);
+			dest[j++] = remplir_dest(s, start, i);
+			if (dest[j - 1] == NULL)
+				return (ft_error(dest), NULL);
 		}
 		i++;
 	}

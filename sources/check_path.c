@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/14 15:17:18 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:33:06 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ char	*check_path_validity(t_data var, char *map)
 
 	game = init();
 	game.map_test = ft_split(map, '\n');
+	if (!game.map_test)
+	{
+		map = map_not_valid(map, "Malloc error");
+		return (NULL);
+	}
 	find_start(&game, var, game.map_test);
 	find_path(&game, game.x, game.y);
 	if (game.collectible != 0 || game.exit != 0)

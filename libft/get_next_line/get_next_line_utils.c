@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:01:19 by cdutel            #+#    #+#             */
-/*   Updated: 2023/12/20 09:42:15 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:14:06 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static char	*ft_malloc_line(t_my_list *temp)
 		temp = temp->next;
 	}
 	new_line = malloc(sizeof(char) * (j + 1));
+	if (!new_line)
+		return (NULL);
 	return (new_line);
 }
 
@@ -49,12 +51,13 @@ char	*ft_new_line(t_my_list *temp)
 {
 	char	*new_line;
 	int		i;
-	int		j;
 
-	new_line = ft_malloc_line(temp);
-	if (!new_line || !temp)
+	int (j) = 0;
+	if (!temp)
 		return (NULL);
-	j = 0;
+	new_line = ft_malloc_line(temp);
+	if (!new_line)
+		return (NULL);
 	while (temp)
 	{
 		i = 0;

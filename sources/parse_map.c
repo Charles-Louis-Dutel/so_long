@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:18:23 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/27 09:34:20 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:34:58 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static char	*is_map_too_big(char *map)
 	int		j;
 
 	test = ft_split(map, '\n');
+	if (!test)
+		return (map_not_valid(map, "Malloc error"));
 	i = 0;
 	while (test[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:01:32 by cdutel            #+#    #+#             */
-/*   Updated: 2023/12/20 09:41:45 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:17:20 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,16 @@ void	ft_read(t_my_list **temp, int fd)
 	{
 		dest = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (!dest)
+		{
+			*temp = NULL;
 			return ;
+		}
 		value = read(fd, dest, BUFFER_SIZE);
 		if (value == -1)
 		{
 			free(dest);
 			free(*temp);
+			*temp = NULL;
 			return ;
 		}
 		dest[value] = '\0';
@@ -120,6 +124,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = NULL;
 	line = ft_new_line(temp);
+	if (!line)
+		return (ft_free_list(temp), NULL);
 	ft_new_temp(&temp);
 	if (line[0] == '\0')
 	{

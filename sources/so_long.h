@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/27 09:32:35 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:52:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	find_start(t_game *game, t_data var, char **map);
 void	ft_le_xav(char **dest);
 t_data	init_var(void);
 t_game	init_game(char *map);
+t_game	init(void);
 char	*map_not_valid(char *map, char *to_print);
 
 /*Game*/

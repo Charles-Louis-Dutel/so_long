@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:16:20 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/14 16:07:29 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:52:43 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,25 @@ t_game	init_game(char *map)
 	game.map = NULL;
 	game.map = ft_split(map, '\n');
 	free(map);
+	game.mlx_ptr = NULL;
+	game.win_ptr = NULL;
+	return (game);
+}
+
+t_game	init(void)
+{
+	t_game	game;
+
+	game.i = 0;
+	game.j = 0;
+	game.x = 0;
+	game.y = 0;
+	game.collectible = 0;
+	game.exit = 0;
+	game.start = 0;
+	game.move = 0;
+	game.error = 0;
+	game.map = NULL;
 	game.mlx_ptr = NULL;
 	game.win_ptr = NULL;
 	return (game);

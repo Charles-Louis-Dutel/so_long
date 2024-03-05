@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:43:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/03/01 12:33:06 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:53:20 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ static void	find_path(t_game *game, int x, int y)
 		game->collectible -= 1;
 		game->map_test[y][x] = 'X';
 	}
-	else if (c == 'E' && game->collectible == 0)
-	{
-		game->exit -= 1;
-		game->map_test[y][x] = 'X';
-	}
 	else if (c == '0' || c == 'P')
 		game->map_test[y][x] = 'X';
 	else
@@ -61,28 +56,44 @@ static void	find_path(t_game *game, int x, int y)
 	find_path(game, x, y - 1);
 }
 
-t_game	init(void)
+static void	find_path_2(t_game *game, int x, int y)
 {
-	t_game	game;
+	char	c;
 
-	game.i = 0;
-	game.j = 0;
-	game.x = 0;
-	game.y = 0;
-	game.collectible = 0;
-	game.exit = 0;
-	game.start = 0;
-	game.move = 0;
-	game.error = 0;
-	game.map = NULL;
-	game.mlx_ptr = NULL;
-	game.win_ptr = NULL;
-	return (game);
+	c = game->map_test[y][x];
+	if (c == 'E')
+	{
+		game->exit -= 1;
+		game->map_test[y][x] = 'Y';
+	}
+	else if (c == 'X')
+		game->map_test[y][x] = 'Y';
+	else
+		return ;
+	find_path_2(game, x + 1, y);
+	find_path_2(game, x - 1, y);
+	find_path_2(game, x, y + 1);
+	find_path_2(game, x, y - 1);
+}
+
+static char	*part_two(t_game game, int x, int y, char *map)
+{
+	find_path_2(&game, x, y);
+	if (game.exit > 0)
+	{
+		map = map_not_valid(map, "No valid path");
+		ft_le_xav(game.map_test);
+		return (NULL);
+	}
+	ft_le_xav(game.map_test);
+	return (map);
 }
 
 char	*check_path_validity(t_data var, char *map)
 {
 	t_game	game;
+	int		x;
+	int		y;
 
 	game = init();
 	game.map_test = ft_split(map, '\n');
@@ -92,13 +103,14 @@ char	*check_path_validity(t_data var, char *map)
 		return (NULL);
 	}
 	find_start(&game, var, game.map_test);
+	y = game.y;
+	x = game.x;
 	find_path(&game, game.x, game.y);
-	if (game.collectible != 0 || game.exit != 0)
+	if (game.collectible > 0)
 	{
 		map = map_not_valid(map, "No valid path");
 		ft_le_xav(game.map_test);
 		return (NULL);
 	}
-	ft_le_xav(game.map_test);
-	return (map);
+	return (part_two(game, x, y, map));
 }

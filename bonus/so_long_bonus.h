@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:04:59 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/27 09:35:02 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:20:18 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	find_start(t_game *game, t_data var, char **map);
 void	ft_le_xav(char **dest);
 t_data	init_var(void);
 t_game	init_game(char *map);
+t_game	init(void);
 char	*map_not_valid(char *map, char *to_print);
 
 /*Game*/
@@ -142,7 +143,8 @@ void	game(char *map);
 int		end_game(t_game *game);
 
 /*Display map*/
-void	print_map(t_game *game);
+void	print_hud(t_game *game);
+void	print_start_map(t_game *game);
 void	put_sprite(t_game *game, int x, int y);
 void	print_move_count(t_game *game);
 
@@ -160,5 +162,7 @@ void	ennemy_move(t_game *game);
 
 /*Print new map*/
 int		print_map_move(t_game *game);
+void	put_sprite_2(t_game *game, char c, int xx, int yy);
+int		get_x_or_y(int i, int j, int game_xy, int size);
 
 #endif

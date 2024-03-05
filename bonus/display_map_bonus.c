@@ -6,38 +6,13 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:00:52 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/25 07:50:57 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:19:51 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	put_sprite(t_game *game, int x, int y)
-{
-	char	c;
-
-	c = game->map[y / PXL][x / PXL];
-	if (c == '1')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.tree, x, y + HUD);
-	else if (c == '0')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.path, x, y + HUD);
-	else if (c == 'P')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.player_right, x, y + HUD);
-	else if (c == 'C')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.pokeball, x, y + HUD);
-	else if (c == 'E')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.exit, x, y + HUD);
-	else if (c == 'S')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img.smogo_left, x, y + HUD);
-}
-
-static void	print_hud(t_game *game)
+void	print_hud(t_game *game)
 {
 	int	i;
 
@@ -56,25 +31,6 @@ static void	print_hud(t_game *game)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->img.zero, i * HUD, 0);
 		i++;
-	}
-}
-
-void	print_map(t_game *game)
-{
-	int	x;
-	int	y;
-
-	print_hud(game);
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			put_sprite(game, x * PXL, y * PXL);
-			x++;
-		}
-		y++;
 	}
 }
 
@@ -130,4 +86,25 @@ void	print_move_count(t_game *game)
 		len--;
 	}
 	free(count);
+}
+
+void	print_start_map(t_game *game)
+{
+	int (xx) = 0;
+	int (yy) = 0;
+	game->i = get_x_or_y(10, 14, game->y, game->height);
+	while (game->map[game->i])
+	{
+		game->j = get_x_or_y(15, 30, game->x, game->len);
+		xx = 0;
+		while (game->map[game->i][game->j])
+		{
+			put_sprite_2(game, game->map[game->i][game->j],
+				xx * PXL, yy * PXL + HUD);
+			game->j++;
+			xx++;
+		}
+		game->i++;
+		yy++;
+	}
 }

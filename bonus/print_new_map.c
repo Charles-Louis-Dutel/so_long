@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:46:36 by cdutel            #+#    #+#             */
-/*   Updated: 2024/01/25 08:09:09 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:20:32 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	put_player(t_game *game, int xx, int yy, char c)
 	}
 }
 
-static void	put_sprite_2(t_game *game, char c, int xx, int yy)
+void	put_sprite_2(t_game *game, char c, int xx, int yy)
 {
 	if (c == '1')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
@@ -99,8 +99,7 @@ int	print_map_move(t_game *game)
 {
 	int (xx) = 0;
 	int (yy) = 0;
-	if (game->n_enemy > 0)
-		ennemy_move(game);
+	ennemy_move(game);
 	if (game->update == 1)
 	{
 		game->i = get_x_or_y(10, 14, game->y, game->height);

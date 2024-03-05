@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:59:21 by cdutel            #+#    #+#             */
-/*   Updated: 2024/02/14 16:39:10 by cdutel           ###   ########.fr       */
+/*   Updated: 2024/03/05 15:40:30 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	handle_input(int keysym, t_game *game)
 
 static int	set_game(t_game *game)
 {
-	print_map(game);
 	while (game->map[game->height])
 	{
 		game->len = 0;
@@ -48,6 +47,9 @@ static int	set_game(t_game *game)
 		}
 		game->height++;
 	}
+	game->to_print = 'D';
+	print_hud(game);
+	print_start_map(game);
 	return (0);
 }
 
